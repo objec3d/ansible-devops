@@ -13,6 +13,7 @@
   ibm.mas_devops.download_from_s3:
     aws_access_key_id: "{{ aws_access_key_id }}"
     aws_secret_access_key: "{{ aws_secret_access_key }}"
+    aws_session_token: "{{ aws_session_token | default(omit, true) }}"
     bucket_name: "{{ s3_bucket_name }}"
     object_name: "mas-{{ mas_instance_id }}-backups/{{ item }}"
     local_dir: "{{ backup_temp_dir }}"

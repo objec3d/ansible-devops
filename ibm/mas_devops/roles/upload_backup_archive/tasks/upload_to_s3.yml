@@ -11,6 +11,7 @@
   ibm.mas_devops.upload_to_s3:
     aws_access_key_id: "{{ aws_access_key_id }}"
     aws_secret_access_key: "{{ aws_secret_access_key }}"
+    aws_session_token: "{{ aws_session_token | default(omit, true) }}"
     bucket_name: "{{ s3_bucket_name }}"
     object_name: "mas-{{ mas_instance_id }}-backups/{{ item | basename }}"
     file_path: "{{ item }}"

@@ -35,6 +35,7 @@ class ActionModule(ActionBase):
         object_name = self._task.args.get('object_name', None)
         aws_access_key_id = self._task.args.get('aws_access_key_id', None)
         aws_secret_access_key = self._task.args.get('aws_secret_access_key', None)
+        aws_session_token = self._task.args.get('aws_session_token', None)
         endpoint_url = self._task.args.get('endpoint_url', None)
         region_name = self._task.args.get('region_name', None)
 
@@ -52,9 +53,10 @@ class ActionModule(ActionBase):
         endpoint_url = normalize_endpoint_url(endpoint=endpoint_url)
 
         upload_status = uploadToS3(
-            file_path=file_path, bucket_name=bucket_name, object_name=object_name, 
-            endpoint_url=endpoint_url, aws_access_key_id=aws_access_key_id, 
-            aws_secret_access_key=aws_secret_access_key, region_name=region_name
+            file_path=file_path, bucket_name=bucket_name, object_name=object_name,
+            endpoint_url=endpoint_url, aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key, aws_session_token=aws_session_token,
+            region_name=region_name
             )
         
         return dict(
